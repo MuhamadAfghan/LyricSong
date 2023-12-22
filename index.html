@@ -10,7 +10,6 @@
         * {
             padding: 0;
             margin: 0;
-
         }
 
         body {
@@ -20,7 +19,6 @@
             overflow: hidden;
             height: 100vh;
             color: black;
-
         }
 
         #container {
@@ -43,6 +41,19 @@
                 bottom: 20px;
                 width: 100%;
             }
+        }
+
+        button{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border-radius: 15px;
+            border: 1px solid #fff;
+            color: white;
+            font-size: 20px;
+            padding: 10px 20px;
+            background-color: transparent;
         }
 
         .wrapper {
@@ -156,34 +167,24 @@
         a {
             color: white;
         }
+
     </style>
 </head>
 
 <body>
 
-    <audio src="LampuMerah.MP3" autoplay></audio>
-    <div id="container"></div>
-    <a href="" class="hidden"></a>
-    <div class="wrapper">
-        <div class="box">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
-    <div class="copyright">
-        <a href="https://bit.ly/portofolio-kangAL">Muhamad Afghan Alzena</a>
-    </div>
-    <script src="https://lyric-song-mp3.netlify.app/vara.min.js"></script>
+    <button onclick="playAudio()">Play</button>
+    <audio id="myAudio" src="LampuMerah.MP3"></audio>
+    
     <script>
-        var fontSize = 40;
+        function playAudio() {
+            var audio = document.getElementById("myAudio");
+            audio.play();
+            var btn = document.querySelector("button");
+            btn.style.display = "none";
+            var innerScript = document.createElement('script');
+            innerScript.innerHTML = `
+            var fontSize = 40;
         if (window.screen.width > 700)
             fontSize = 55;
         else if (window.screen.width > 1200)
@@ -231,7 +232,7 @@
                     text: "Di sana",
                     y: 150,
                     fromCurrentPosition: { y: false },
-                    delay: 1500,
+                    delay: 1200,
                     duration: 1000
                 },
                 {
@@ -239,7 +240,7 @@
                     y: 150,
                     fromCurrentPosition: { y: false },
                     delay: 1000,
-                    duration: 2500
+                    duration: 3000
                 },
                 {
                     text: "Lampu Merah",
@@ -268,7 +269,31 @@
             });
         });
 
+        `;
+            document.body.appendChild(innerScript);
+        }
     </script>
+
+    <div id="container"></div>
+    <a href="" class="hidden"></a>
+    <div class="wrapper">
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <div class="copyright">
+        <a href="https://bit.ly/portofolio-kangAL">Muhamad Afghan Alzena</a>
+    </div>
+    <script src="https://lyric-song-mp3.netlify.app/vara.min.js"></script>
 
 </body>
 
